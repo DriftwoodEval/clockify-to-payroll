@@ -18,7 +18,7 @@ users:
   Jane Doe:
     ID: 3
     SSN: 987-65-4321
-    Description:
+    Descriptions:
       Website: # Specific task description
         Pay Designation: 2 # Payroll designation for this task
         Worked WG2 Code: 4 # Payroll WG2 code for this task
@@ -29,4 +29,4 @@ users:
 
 If `config.yml` is missing on the first run, a template will be automatically created for you.
 
-If a user has a `Description` in their configuration and additional task descriptions exist in `clockify.xlsx`, an error will occur to warn you.
+If a user has a `Descriptions` in their configuration and additional task descriptions exist in `clockify.xlsx`, an error will occur to warn you.
