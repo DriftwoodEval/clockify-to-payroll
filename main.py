@@ -157,20 +157,20 @@ def create_user_data(config, clockify, start_date, end_date):
 
 
 def main():
-    # try:
-    config = read_config()
-    clockify_df = get_clockify_data()
-    start_date, end_date = get_start_and_end_dates(clockify_df)
-    clockify_df = clean_clockify_data(clockify_df)
-    validate_config(config, clockify_df)
-    user_data = create_user_data(config, clockify_df, start_date, end_date)
     try:
-        user_data.to_excel("Payroll_to_Import.xlsx", index=False)
-    finally:
-        print("Payroll data saved to Payroll_to_Import.xlsx")
-    # except Exception as e:
-    #     print(f"An error occurred: {e}")
-    #     input("Press Enter to close...")
+        config = read_config()
+        clockify_df = get_clockify_data()
+        start_date, end_date = get_start_and_end_dates(clockify_df)
+        clockify_df = clean_clockify_data(clockify_df)
+        validate_config(config, clockify_df)
+        user_data = create_user_data(config, clockify_df, start_date, end_date)
+        try:
+            user_data.to_excel("Payroll_to_Import.xlsx", index=False)
+        finally:
+            print("Payroll data saved to Payroll_to_Import.xlsx")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        input("Press Enter to close...")
 
 
 if __name__ == "__main__":
