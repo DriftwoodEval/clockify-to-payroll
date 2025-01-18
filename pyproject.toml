@@ -1,0 +1,11 @@
+[project]
+name = "clockify-to-payroll"
+version = "0.1.0"
+description = "Transform Clockify data for payroll software"
+requires-python = ">=3.13"
+dependencies = ["openpyxl>=3.1.5", "pandas>=2.2.3", "pyyaml>=6.0.2"]
+
+[dependency-groups]
+dev = [
+    "pyinstaller>=6.11.1",
+]
