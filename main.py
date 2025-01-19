@@ -1,6 +1,7 @@
 import re
 import warnings
-from os import path
+from os import getcwd, path
+from tkinter import filedialog
 
 import pandas as pd
 import yaml
@@ -13,7 +14,9 @@ warnings.filterwarnings(
 
 
 def get_clockify_data():
-    clockify_file = "./clockify.xlsx"
+    clockify_file = filedialog.askopenfilename(
+        filetypes=(("Excel files", "*.xlsx"),), initialdir=getcwd()
+    )
     if not path.isfile(clockify_file):
         raise FileNotFoundError(f"File '{clockify_file}' does not exist.")
     clockify_df = pd.read_excel(clockify_file)
