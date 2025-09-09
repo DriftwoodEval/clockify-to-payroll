@@ -29,6 +29,7 @@ def generate_config(clockify_df):
         for user in clockify_df["User"].unique().tolist()
         if not pd.isna(user) and not re.match(r"Total \(.*", user)
     ]
+
     config = {
         "users": {
             user: {
@@ -116,7 +117,7 @@ def validate_config(config, clockify):
 
         if user_data.get("Descriptions"):
             user_clockify_descriptions = (
-                clockify.loc[clockify["User"] == user, "Description"].dropna().unique()
+                clockify.loc[clockify["User"] == user, "Project"].dropna().unique()
             )
             config_descriptions = set(user_data["Descriptions"].keys())
             missing_descriptions = set(user_clockify_descriptions) - config_descriptions
@@ -149,7 +150,7 @@ def create_user_data(config, clockify, start_date, end_date):
         if user_data.get("Descriptions"):
             for desc_type, desc_data in user_data["Descriptions"].items():
                 user_hours = clockify.loc[
-                    clockify["User"].eq(user) & clockify["Description"].eq(desc_type)
+                    clockify["User"].eq(user) & clockify["Project"].eq(desc_type)
                 ].iloc[0]["Time (decimal)"]
                 user_entry = {
                     "Name": user,
